@@ -157,7 +157,7 @@
 
         <!-- Switch Availability Section -->
         <button class="toggle-availability-button" onclick="toggleAvailability()">
-            <span id="availabilityStatus">Change to Available</span>
+            <span id="availabilityStatus">Change to Available(Currently Unavailable)</span>
         </button>
 
         <!-- Ride Notification Button -->
@@ -191,11 +191,11 @@
         if (isAvailable) {
             toggleButton.classList.remove("available");
             toggleButton.classList.add("unavailable");
-            toggleButton.textContent = "Change to Available"; // Update button text
+            toggleButton.textContent = "Change to Available(Currently Unavailable)"; // Update button text
         } else {
             toggleButton.classList.remove("unavailable");
             toggleButton.classList.add("available");
-            toggleButton.textContent = "Change to Unavailable"; // Update button text
+            toggleButton.textContent = "Change to Unavailable(Currently Available)"; // Update button text
         }
 
         }
