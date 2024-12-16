@@ -114,7 +114,8 @@
                 <p><strong>Fare:</strong> $10</p>
                 <div class="status-container">
                     <span>Payment Status:</span>
-                    <select id="paymentStatus1" onchange="updatePaymentStatus(1)">
+                    <select id="paymentStatus2" aria-label="Payment Status for Notification 2" onchange="updatePaymentStatus(2)">
+                        <option value="default" disabled selected>Select Status</option>
                         <option value="unpaid">Unpaid</option>
                         <option value="paid">Paid</option>
                     </select>
@@ -128,7 +129,8 @@
                 <p><strong>Fare:</strong> $8</p>
                 <div class="status-container">
                     <span>Payment Status:</span>
-                    <select id="paymentStatus2" onchange="updatePaymentStatus(2)">
+                    <select id="paymentStatus2" aria-label="Payment Status for Notification 2" onchange="updatePaymentStatus(2)">
+                        <option value="default" disabled selected>Select Status</option>
                         <option value="unpaid">Unpaid</option>
                         <option value="paid">Paid</option>
                     </select>
@@ -147,6 +149,11 @@
 
             // Simulate sending payment status to backend
             alert(`Payment status for Notification ${notificationId} updated to: ${status}`);
+
+            if (status === "default") {
+                alert("Please select a valid status.");
+                return;
+            }
 
             // Add backend interaction logic here (e.g., using Fetch API or Axios to send the updated status)
         }
