@@ -87,20 +87,27 @@
 
         .toggle-availability-button {
             margin-top: 20px;
-            background-color: white;
-            color: #ff7e5f;
+            background-color: #ff7e5f; /* Default: "Available" color */
+            color: white;
             padding: 10px 20px;
             font-size: 16px;
             border: 2px solid #ff7e5f;
             border-radius: 5px;
             cursor: pointer;
             width: 100%;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
         }
 
-        .toggle-availability-button:hover {
-            background-color: #feb47b;
+        .toggle-availability-button.available {
+            background-color: #feb47b; /* Available state */
+            color: white;
+        }  
+
+        .toggle-availability-button.unavailable {
+            background-color: #ff7e5f; /* Unavailable state */
+            color: white;
         }
+
 
         .logout-button {
             position: relative;
@@ -150,7 +157,7 @@
 
         <!-- Switch Availability Section -->
         <button class="toggle-availability-button" onclick="toggleAvailability()">
-            <span id="availabilityStatus">Set Available</span>
+            <span id="availabilityStatus">Change to Available</span>
         </button>
 
         <!-- Ride Notification Button -->
@@ -174,23 +181,25 @@
             document.getElementById('notificationBadge').textContent = unreadRideOrders;
         }
 
-        // Toggle driver availability
-        let isAvailable = false;
+        let isAvailable = true;
 
         function toggleAvailability() {
-            isAvailable = !isAvailable;
-            const availabilityText = document.getElementById("availabilityStatus");
+        isAvailable = !isAvailable;
 
-            if (isAvailable) {
-                availabilityText.textContent = "Set Unavailable";
-                availabilityText.style.backgroundColor = "#feb47b"; // Change button color
-            } else {
-                availabilityText.textContent = "Set Available";
-                availabilityText.style.backgroundColor = "#ff7e5f"; // Change back to original color
-            }
+        const toggleButton = document.querySelector(".toggle-availability-button");
 
-            // You can send an update to the backend about the driver's availability here
+        if (isAvailable) {
+            toggleButton.classList.remove("available");
+            toggleButton.classList.add("unavailable");
+            toggleButton.textContent = "Change to Available"; // Update button text
+        } else {
+            toggleButton.classList.remove("unavailable");
+            toggleButton.classList.add("available");
+            toggleButton.textContent = "Change to Unavailable"; // Update button text
         }
+
+        }
+
     </script>
 </body>
 </html>
