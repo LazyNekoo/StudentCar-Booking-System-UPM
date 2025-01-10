@@ -149,6 +149,7 @@
     <script>
         function chooseDriver(driverName) {
             alert("You have chosen " + driverName + " for your ride.");
+            window.location.href = `tripOrder.html?driver=${encodeURIComponent(driverName)}`;
             // Functionality to interact with backend here.
         }
     </script>
